@@ -227,6 +227,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Izin kamera ditolak", Toast.LENGTH_SHORT).show()
             }
-            }
         }
+    }
 }

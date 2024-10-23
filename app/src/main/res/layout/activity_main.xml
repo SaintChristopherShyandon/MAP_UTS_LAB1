@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,8 +10,7 @@
     tools:context=".MainActivity"
     tools:ignore="ExtraText">
 
-    <!-- Display the current date and time -->
-
+    <!-- Display the current date and time at the top -->
     <TextView
         android:id="@+id/textViewDateTime"
         android:layout_width="wrap_content"
@@ -18,22 +18,21 @@
         android:text="Loading date and time..."
         android:textColor="#000000"
         android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
     <!-- Preview of captured photo -->
     <ImageView
         android:id="@+id/imageViewPreview"
-        android:layout_marginTop="20dp"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDateTime"
+        app:layout_constraintTop_toBottomOf="@id/textViewDateTime"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp" />
 
     <!-- Button to retake photo -->
     <Button
@@ -42,9 +41,10 @@
         android:layout_height="wrap_content"
         android:text="Ambil Ulang"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewPreview"
+        app:layout_constraintTop_toBottomOf="@id/imageViewPreview"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
     <!-- Button to upload photo -->
     <Button
@@ -53,45 +53,43 @@
         android:layout_height="wrap_content"
         android:text="Unggah Foto"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRetake"
+        app:layout_constraintTop_toBottomOf="@id/buttonRetake"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
     <!-- Bottom Navigation View -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#F5F5F5"
+        android:background="#FFFFFF"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Icon to open camera -->
-
+    <!-- Background circle, repositioned for better visibility -->
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="276dp"
-        android:layout_height="262dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:srcCompat="@drawable/circle_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/circle_background" />
+        app:layout_constraintVertical_bias="0.8" />
 
+    <!-- Icon to open camera, centered within the circle -->
     <ImageView
         android:id="@+id/icon_touch"
-        android:layout_width="174dp"
-        android:layout_height="155dp"
-        app:layout_constraintBottom_toBottomOf="@+id/bottomNavigationView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.479"
-        app:srcCompat="@drawable/icon_touch" />
-
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_touch"
+        app:layout_constraintCenterX_toCenterXOf="@+id/imageView7"
+        app:layout_constraintCenterY_toCenterYOf="@+id/imageView7"
+        android:layout_marginBottom="20dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

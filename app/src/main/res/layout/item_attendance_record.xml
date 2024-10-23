@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:padding="8dp">
 
-    <!-- Container untuk teks (hari, tanggal, jam, status) -->
+    <!-- Container for text (day, date, time, status) using modern styling -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -17,36 +17,40 @@
         app:layout_constraintEnd_toStartOf="@id/imageViewPhoto"
         android:layout_marginEnd="8dp">
 
-        <!-- TextView untuk Hari -->
+        <!-- TextView for Day -->
         <TextView
             android:id="@+id/textViewDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hari: Senin" />
+            android:text="Hari: Senin"
+            style="@style/TextAppearance.MaterialComponents.Body1" />
 
-        <!-- TextView untuk Tanggal -->
+        <!-- TextView for Date -->
         <TextView
             android:id="@+id/textViewDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tanggal: 2024-10-10" />
+            android:text="Tanggal: 2024-10-10"
+            style="@style/TextAppearance.MaterialComponents.Body1" />
 
-        <!-- TextView untuk Jam -->
+        <!-- TextView for Time -->
         <TextView
             android:id="@+id/textViewTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jam: 08:00" />
+            android:text="Jam: 08:00"
+            style="@style/TextAppearance.MaterialComponents.Body1" />
 
-        <!-- TextView untuk Status -->
+        <!-- TextView for Status -->
         <TextView
             android:id="@+id/textViewStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Status: Hadir" />
+            android:text="Status: Hadir"
+            style="@style/TextAppearance.MaterialComponents.Body1" />
     </LinearLayout>
 
-    <!-- ImageView untuk Foto Absen -->
+    <!-- ImageView for Attendance Photo -->
     <ImageView
         android:id="@+id/imageViewPhoto"
         android:layout_width="64dp"

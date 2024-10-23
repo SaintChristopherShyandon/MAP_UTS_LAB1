@@ -78,31 +78,29 @@ class HistoryActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchAttendanceRecords() {
-        firestore.collection("attendanceRecords")
-            .whereEqualTo("userId", auth.currentUser?.uid)
-            .get()
-            .addOnSuccessListener { result ->
-                attendanceRecords.clear() // Clear list before filling
-                for (document in result) {
-                    val record = document.toObject(AttendanceRecord::class.java)
-                    attendanceRecords.add(record)
+    fun fetchAttendanceRecords() {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            firestore.collection("attendanceRecords")
+                .whereEqualTo("userId", user.uid)
+                .get()
+                .addOnSuccessListener { result ->
+                    val records = result.toObjects(AttendanceRecord::class.java)
                 }
-                attendanceRecords.sortByDescending { it.date }
-                adapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener { e ->
-                println("Error fetching documents: $e")
-            }
+                .addOnFailureListener { e ->
+                    println("Error fetching documents: $e")
+                }
+        }
     }
 
-    private fun saveAttendanceRecordToFirestore(record: AttendanceRecord) {
-        val user = auth.currentUser
-        if (record.photo.isNotEmpty()) {
-            // Upload photo to Firebase Storage and then save record
+
+
+    fun saveAttendanceRecordToFirestore(record: AttendanceRecord) {
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null && record.photo.isNotEmpty()) {
             uploadPhotoToStorage(record.photo) { photoUrl ->
                 val recordMap = hashMapOf(
-                    "userId" to user?.uid,
+                    "userId" to user.uid,
                     "date" to record.date,
                     "time" to record.time,
                     "status" to record.status,
@@ -110,7 +108,6 @@ class HistoryActivity : AppCompatActivity() {
                     "isCheckedIn" to record.isCheckedIn,
                     "isCheckedOut" to record.isCheckedOut
                 )
-
                 firestore.collection("attendanceRecords")
                     .add(recordMap)
                     .addOnSuccessListener { documentReference ->
@@ -122,6 +119,8 @@ class HistoryActivity : AppCompatActivity() {
             }
         }
     }
+
+
 
     private fun uploadPhotoToStorage(photoPath: String, callback: (photoUrl: String) -> Unit) {
         val storageRef = storage.reference.child("attendancePhotos/${System.currentTimeMillis()}.jpg")
