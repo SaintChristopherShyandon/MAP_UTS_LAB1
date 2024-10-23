@@ -1,0 +1,25 @@
+<!-- res/menu/bottom_nav_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F5F5F5">
+
+
+    <!-- History Item -->
+    <item
+        android:id="@+id/action_history"
+        android:icon="@drawable/icon_history"
+    android:title="History" />
+
+    <!-- Home Item -->
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/icon_home"
+    android:title="Home" />
+
+    <!-- Profile Item -->
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/icon_profile"
+    android:title="Profile" />
+
+</menu>
